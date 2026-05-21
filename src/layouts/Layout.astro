@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Stone & Key Consulting",
+  description = "Independent consulting for open-source strategy, community and developer relations, market visibility, event programming, and connecting companies with developers.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0d11" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+
+    <!-- Fonts: serif for heads, sans for body, mono for accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Primary">
+      <a href={import.meta.env.BASE_URL || "/"} class="brand">
+        Stone <span class="amp">&amp;</span> Key
+      </a>
+      <ul>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; {new Date().getFullYear()} Stone &amp; Key Consulting</span>
+      <span class="photo-credit">
+        Photo by{" "}
+        <a
+          href="https://unsplash.com/@pkseva?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          rel="noopener"
+        >
+          همَّام
+        </a>{" "}
+        on{" "}
+        <a
+          href="https://unsplash.com/photos/antique-key-with-ornate-bow-rests-on-corrugated-roof-k7CH_Lof6NI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          rel="noopener"
+        >
+          Unsplash
+        </a>
+      </span>
+    </footer>
+
+    <script>
+      // Scroll-reveal via IntersectionObserver. Lightweight, no deps.
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduce && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+        );
+        document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      } else {
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+      }
+    </script>
+  </body>
+</html>

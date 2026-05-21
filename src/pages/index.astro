@@ -1,0 +1,117 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import heroImage from "../assets/hero-stone-key.jpg";
+
+const hero = await getEntry("sections", "hero");
+const story = await getEntry("sections", "story");
+const servicesIntro = await getEntry("sections", "services-intro");
+const contact = await getEntry("sections", "contact");
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const { Content: StoryBody } = await render(story!);
+const { Content: ServicesIntroBody } = await render(servicesIntro!);
+---
+
+<Layout>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <Image
+      src={heroImage}
+      alt=""
+      class="hero-bg"
+      widths={[800, 1280, 1920, 2560]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+    />
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow reveal">{hero!.data.eyebrow}</p>
+      <h1 class="reveal delay-1">
+        {
+          hero!.data.headline_lines?.map((line, i) => (
+            <>
+              {line.text}{" "}
+              <span class="accent">{line.accent}</span>
+              {i < hero!.data.headline_lines!.length - 1 && <br />}
+            </>
+          ))
+        }
+      </h1>
+      <p class="tagline reveal delay-2">{hero!.data.tagline}</p>
+      <a
+        href="#story"
+        class="scroll-cue reveal delay-3"
+        aria-label="Scroll to read more"
+      >
+        <span>{hero!.data.scroll_label}</span>
+        <span class="line" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story" class="section-rule">
+    <div class="container">
+      <div class="two-col">
+        <aside class="col-side">
+          <p class="eyebrow reveal">{story!.data.eyebrow}</p>
+        </aside>
+        <div>
+          <p class="lede reveal">{story!.data.lede}</p>
+          <div class="reveal delay-1 prose">
+            <StoryBody />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section-rule">
+    <div class="container">
+      <p class="eyebrow reveal">{servicesIntro!.data.eyebrow}</p>
+      <h2 class="reveal delay-1">{servicesIntro!.data.headline}</h2>
+      <div class="reveal delay-2 prose intro">
+        <ServicesIntroBody />
+      </div>
+      <div class="services">
+        {
+          services.map(async (s, i) => {
+            const { Content } = await render(s);
+            return (
+              <article class={`service reveal delay-${(i % 4) + 1}`}>
+                <span class="num">
+                  {String(s.data.order).padStart(2, "0")}
+                </span>
+                <h3>{s.data.title}</h3>
+                <div class="prose service-body">
+                  <Content />
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-rule contact">
+    <div class="container">
+      <p class="eyebrow reveal">{contact!.data.eyebrow}</p>
+      <h2 class="reveal delay-1">{contact!.data.headline}</h2>
+      <p class="lede reveal delay-2">{contact!.data.lede}</p>
+      <a class="cta reveal delay-3" href={contact!.data.cta_href}>
+        {contact!.data.cta_label}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</Layout>
