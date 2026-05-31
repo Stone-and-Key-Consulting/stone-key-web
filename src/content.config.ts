@@ -32,4 +32,17 @@ const services = defineCollection({
   }),
 });
 
-export const collections = { sections, services };
+// ---------- blog ----------
+// One markdown file per blog post under src/content/blog/.
+const blog = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    tags: z.array(z.string()).optional(),
+    draft: z.boolean().optional().default(false),
+  }),
+});
+
+export const collections = { sections, services, blog };
