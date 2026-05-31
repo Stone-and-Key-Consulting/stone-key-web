@@ -1,11 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// GitHub Pages publishes this repo to:
-//   https://stone-and-key-consulting.github.io/stone-key-web/
-// If a custom domain is added later, set `site` to it and remove `base`.
+// Custom domain (set via CNAME file + DNS record).
+// See public/CNAME for the domain configured for GitHub Pages.
 export default defineConfig({
-  site: 'https://stone-and-key-consulting.github.io',
-  base: '/stone-key-web',
+  site: 'https://www.stoneandkey.consulting',
   trailingSlash: 'ignore',
   build: {
     assets: 'assets',
