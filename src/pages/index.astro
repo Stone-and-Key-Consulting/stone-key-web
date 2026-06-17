@@ -7,14 +7,20 @@ import heroImage from "../assets/hero-stone-key.jpg";
 const hero = await getEntry("sections", "hero");
 const story = await getEntry("sections", "story");
 const servicesIntro = await getEntry("sections", "services-intro");
+const proof = await getEntry("sections", "proof");
 const contact = await getEntry("sections", "contact");
 
 const services = (await getCollection("services")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 
+const testimonials = (await getCollection("testimonials")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
 const { Content: StoryBody } = await render(story!);
 const { Content: ServicesIntroBody } = await render(servicesIntro!);
+// Proof body is empty (eyebrow only); testimonials are rendered from the collection below.
 ---
 
 <Layout>
@@ -95,6 +101,31 @@ const { Content: ServicesIntroBody } = await render(servicesIntro!);
                   <Content />
                 </div>
               </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="proof" class="section-rule proof">
+    <div class="container">
+      <p class="eyebrow reveal">{proof!.data.eyebrow}</p>
+      <div class="testimonials-grid reveal delay-1">
+        {
+          testimonials.map(async (t, i) => {
+            const { Content } = await render(t);
+            return (
+              <blockquote class={`reveal delay-${(i % 3) + 1}`}>
+                <div class="quote-body">
+                  <Content />
+                </div>
+                <footer>
+                  <strong>{t.data.name}</strong>
+                  <span>{t.data.title}</span>
+                </footer>
+              </blockquote>
             );
           })
         }

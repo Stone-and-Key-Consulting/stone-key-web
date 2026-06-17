@@ -429,6 +429,91 @@ section {
   color: var(--ink-1);
 }
 
+/* ---------- proof / testimonial ---------- */
+.proof {
+  text-align: left;
+}
+
+.testimonials-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 660px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonials-grid blockquote {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0)
+  );
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 240ms ease, transform 240ms ease;
+}
+
+.testimonials-grid blockquote:hover {
+  border-color: var(--brass-soft);
+  transform: translateY(-2px);
+}
+
+.testimonials-grid .quote-body {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--ink-1);
+}
+
+.testimonials-grid .quote-body p:first-of-type::before {
+  content: "“";
+  font-size: 2rem;
+  line-height: 0;
+  color: var(--brass);
+  display: inline-block;
+  margin-right: 0.15em;
+  vertical-align: -0.3em;
+  font-family: var(--font-serif);
+}
+
+.testimonials-grid blockquote footer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.testimonials-grid blockquote footer strong {
+  color: var(--ink-0);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.testimonials-grid blockquote footer span {
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
 /* ---------- contact ---------- */
 .contact {
   text-align: left;

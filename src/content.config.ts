@@ -32,6 +32,17 @@ const services = defineCollection({
   }),
 });
 
+// ---------- repeating: testimonials ----------
+// One markdown file per testimonial. Body is the quote (rendered as blockquote).
+const testimonials = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/testimonials" }),
+  schema: z.object({
+    order: z.number(),
+    name: z.string(),
+    title: z.string(),
+  }),
+});
+
 // ---------- blog ----------
 // One markdown file per blog post under src/content/blog/.
 const blog = defineCollection({
@@ -45,4 +56,4 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { sections, services, blog };
+export const collections = { sections, services, testimonials, blog };
