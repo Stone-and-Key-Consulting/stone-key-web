@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Partnerships — Stone & Key Consulting"
+  description="Organisations Stone & Key Consulting works alongside — including QConsul LLC, providing Responsible AI Program and Product Leadership."
+>
+  <section class="partners" style="padding-top: 8rem;">
+    <div class="container">
+      <p class="eyebrow">Partnerships</p>
+      <h1>Partnerships</h1>
+      <p class="lede" style="max-width: 52ch;">
+        Organisations Stone &amp; Key Consulting works alongside — people doing
+        complementary work that I'm glad to point you toward.
+      </p>
+
+      <article class="partner">
+        <header class="partner-head">
+          <h2>
+            <a href="https://qconsultai.com" rel="noopener">QConsul LLC</a>
+          </h2>
+          <p class="tagline">Responsible AI Program &amp; Product Leadership</p>
+          <p class="meta">
+            Portland, Oregon
+            <span class="dot">·</span>
+            <a href="https://qconsultai.com" rel="noopener">qconsultai.com</a>
+          </p>
+        </header>
+
+        <div class="partner-body">
+          <h3>Company overview</h3>
+          <p>
+            QConsul LLC provides Responsible AI Program &amp; Product Leadership,
+            embedding senior leadership with executive teams to plan, govern, and
+            responsibly scale agentic AI systems. QConsul connects executive
+            strategy, governance, and implementation through measurable sprint
+            delivery aligned with client business objectives and KPIs.
+          </p>
+          <p>
+            Its approach, <strong>Sprint-Governed AI</strong>, brings strategy,
+            prioritization, delivery, and ongoing improvement into a shared
+            operating cadence. QConsul helps organizations coordinate work across
+            people, AI agents, and independent specialists, translating
+            responsible AI commitments into measurable business outcomes.
+          </p>
+          <p>
+            Engagements emphasize business value, quality, and ROI per Token&trade;.
+            As an Oregon Benefit Company, QConsul weighs its operating model and
+            success criteria against a triple bottom line of people, planet, and
+            prosperity.
+          </p>
+
+          <h3>Founder</h3>
+          <div class="founder">
+            <p class="founder-name">
+              Karen Michael
+              <span class="founder-role">Founder &amp; Principal</span>
+            </p>
+            <p>
+              Karen Michael, Founder &amp; Principal of QConsul LLC, brings more
+              than 30 years of transformation leadership across enterprise,
+              public-sector, and mid-market environments. She connects business
+              strategy, people, process, and technology, combining program and
+              product leadership with hands-on experience building and governing
+              agentic systems. Her focus is helping organizations turn AI strategy
+              into governed delivery and measurable business value.
+            </p>
+            <p>
+              She holds an M.S. in Software Engineering and advanced Scrum
+              Alliance credentials (CSP-SM, CSP-PO). She also holds EnterpriseClaw
+              certification in Enterprise AI Agent Leadership and has completed
+              ISO/IEC 42001 Lead Implementer training.
+            </p>
+          </div>
+        </div>
+
+        <p class="partner-cta">
+          <a href="https://qconsultai.com" rel="noopener" class="btn-outline">
+            Visit qconsultai.com
+          </a>
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .partners {
+    min-height: 70vh;
+    padding-bottom: var(--section-pad-y);
+  }
+
+  .partner {
+    margin-top: 4rem;
+    border-top: 1px solid var(--stone-line);
+    padding-top: 3rem;
+  }
+
+  .partner-head h2 {
+    margin: 0;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  }
+  .partner-head h2 a {
+    color: var(--ink-0);
+    border-bottom: none;
+  }
+  .partner-head h2 a:hover {
+    color: var(--brass);
+  }
+
+  .tagline {
+    margin: 0.4rem 0 0.6rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-style: italic;
+    color: var(--ink-1);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .meta a {
+    color: var(--brass);
+    border-bottom: none;
+  }
+  .meta a:hover {
+    color: var(--ink-0);
+  }
+  .dot {
+    opacity: 0.5;
+    padding: 0 0.35rem;
+  }
+
+  .partner-body {
+    max-width: var(--measure);
+    margin-top: 2.2rem;
+  }
+  .partner-body h3 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin: 2.4rem 0 0.9rem;
+  }
+  .partner-body h3:first-child {
+    margin-top: 0;
+  }
+  .partner-body p {
+    color: var(--ink-1);
+    font-size: 0.98rem;
+    line-height: 1.72;
+    margin: 0 0 1.1rem;
+  }
+  .partner-body strong {
+    color: var(--ink-0);
+    font-weight: 600;
+  }
+
+  .founder {
+    border-left: 2px solid var(--brass-soft);
+    padding-left: 1.4rem;
+  }
+  .founder-name {
+    color: var(--ink-0) !important;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    margin-bottom: 0.9rem !important;
+  }
+  .founder-role {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 0.3rem;
+  }
+
+  .partner-cta {
+    margin-top: 2.4rem;
+  }
+  .btn-outline {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--brass);
+    border: 1px solid var(--brass-soft);
+    padding: 0.65rem 1.2rem;
+    border-radius: 3px;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-outline:hover {
+    background: rgba(200, 162, 107, 0.1);
+    border-color: var(--brass);
+    color: var(--ink-0);
+  }
+</style>
